@@ -52,3 +52,10 @@ You can turn any `SPA` to `PWA`
 10. Media API (camera & Geolocation)
 11. Automated SW Management
 12. SPAs & PWAs with your #1 Framework
+
+
+## Understanding App Manifest
+
+The browser depending on which operating system it's running on can even allow your app to install itself on the home screen of your user that of course is where you want to get sitting right next to all these native apps which had to be installed through the App Store.
+
+**Makes Your Web App Installable** which means we can add it to our home screen on our mobile device 
