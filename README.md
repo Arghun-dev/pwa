@@ -10,6 +10,8 @@ for example i create a folder called `requests` and inside that I can declare se
 
 **for example I create a file called in this project I create a file called `fetchWeather.js` inside the `requests` folder just like this**
 
+
+fetchWeather.js
 ```js
 import axios from 'axios'
 
