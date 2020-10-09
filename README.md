@@ -79,3 +79,54 @@ export default function App() {
   )
 }
 ```
+
+
+**till now was the React side of the project, now we want to add the `pwa` side of the application**
+
+**Now we want to add the functionality to see the application offline and make the app installable on the `web` and `mobile devices`**
+
+**in this part we're not concerned with the `src` folder, we're done with that**
+
+**Now we have to focus on `public` folder**
+
+**what we're going to do, is to delete everything in `public` folder besides `index.html`, so we can re-create these things ourselves to understand what's going on**
+
+### main part (adding the service worker)
+
+**Service Worker is a Javascript file which runs all the time, as soon as you open the page it starts running, and it keeps running even after you closed the page, for that reason service workers cam help us with a lot of features, for example they can push notificaions from your mobile phone**
+
+**right now we're going to register our first service worker, we do that exactly inside `index.html` just inside `body` of `index.html` we're going to create `script tag`**
+
+1. first we have to check weather the service worker is supported by our current browser
+
+index.html
+```js
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./serviceworker')
+        })
+      }
+    </script>
+  </body>
+</html>
+
+```
