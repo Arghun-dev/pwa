@@ -113,7 +113,6 @@ index.html
       content="Web site created using create-react-app"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <title>React App</title>
   </head>
   <body>
@@ -122,7 +121,7 @@ index.html
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('./serviceworker')
+          navigator.serviceWorker.register('./serviceworker.js')
             .then((reg) => console.log('Success :', reg.scope))
             .catch((err) => console.log(err))
         })
