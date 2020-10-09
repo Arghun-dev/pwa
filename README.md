@@ -40,27 +40,42 @@ for example I want to call fetchWeather when user hit enter
 
 App.js
 ```js
-import React from 'react'
-import { fetchWeather } from './Requests/fetchWeathe.js'
+import React, { useState } from 'react'
+import { fetchWeather } from './requests/Requests'
 
 export default function App() {
   const [query, setQuery] = useState('')
-  
+  const [weather, setWeather] = useState({})
+  console.log(weather)
+
   const search = async (e) => {
     if (e.key === 'Enter') {
       const data = await fetchWeather(query)
-      
-      console.log(data)
+      setWeather(data)
+      setQuery('')
     }
   }
-  
+
   return (
+    <>
     <input
-      type="text"
       value={query}
       onChange={e => setQuery(e.target.value)}
-      onKeyPress={search}
+      onKeyPress={search} 
     />
+    {weather.main && (
+      <div>
+      <h2>
+        <span>{weather.name}</span>
+        <sup>{weather.sys.country}</sup>
+      </h2>
+      <div>
+        {Math.round(weather.main.temp)}
+        <sup>&deg; C</sup>
+      </div>
+      </div>
+    )}
+    </>
   )
 }
 ```
