@@ -132,3 +132,16 @@ index.html
 ```
 
 2. now we're create the file `serviceworker.js` inside `public` folder
+3. now in Application tab check the `update on reload` in Service Workers and clear the storage and then refresh the page, now you should see
+`Success:  http://localhost:3000/`
+
+**it means we successfully registered the service worker**
+
+4. now inside `serviceworker.js`
+**inside of here we're going to create first the `cache name`**
+**this is going to be the name of our cache**
+**`CAHCHE` stands for the storage of our browser, we load something once, if we you make request, for example if we load the image, we don't have to reload the image every time we go online, we can just take it from the cache, it's faster and more effective**
+
+```js
+const CACHE_NAME
+```
