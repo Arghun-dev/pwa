@@ -123,10 +123,13 @@ index.html
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('./serviceworker')
+            .then((reg) => console.log('Success :', reg.scope))
+            .catch((err) => console.log(err))
         })
       }
     </script>
   </body>
 </html>
-
 ```
+
+2. now we're create the file `serviceworker.js` inside `public` folder
