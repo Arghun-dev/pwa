@@ -59,6 +59,7 @@ export default function App() {
       type="text"
       value={query}
       onChange={e => setQuery(e.target.value)}
+      onKeyPress={search}
     />
   )
 }
