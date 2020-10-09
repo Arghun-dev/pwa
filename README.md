@@ -35,4 +35,31 @@ export const fetchWeather = async (query) => {
 }
 ```
 
+And then you can call the `fetchWeather` function in your component to get data just like below:
+for example I want to call fetchWeather when user hit enter
 
+App.js
+```js
+import React from 'react'
+import { fetchWeather } from './Requests/fetchWeathe.js'
+
+export default function App() {
+  const [query, setQuery] = useState('')
+  
+  const search = async (e) => {
+    if (e.key === 'Enter') {
+      const data = await fetchWeather(query)
+      
+      console.log(data)
+    }
+  }
+  
+  return (
+    <input
+      type="text"
+      value={query}
+      onChange={e => setQuery(e.target.value)}
+    />
+  )
+}
+```
