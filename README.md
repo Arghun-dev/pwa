@@ -142,6 +142,40 @@ index.html
 **this is going to be the name of our cache**
 **`CAHCHE` stands for the storage of our browser, we load something once, if we you make request, for example if we load the image, we don't have to reload the image every time we go online, we can just take it from the cache, it's faster and more effective**
 
+serviceworker.js
 ```js
-const CACHE_NAME
+const CACHE_NAME = "version-1"
+const urlsToCache = [ 'index.html', 'offline.html' ]
+
+const self = this;
+
+// Install SW
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then((cache) => {
+        console.log('opened cache')
+        
+        return cache.addAll(urlsToCache)
+      })
+  )
+})
+
+// Listen for requests
+self.addEventListener('fetch', (event) => {
+   event.respondWith(
+    caches.match(event.request)
+      .then(() => {
+        return fetch(event.request)
+          .catch(() => caches.match('offline.html'))
+      })
+   )
+})
+
+// Activate SW
+self.addEventListener('activate', (event) => {
+})
 ```
+
+**the self means the serviceworker itself**
+**Now if you look at the Application -> cache storage you will see `index.html` and `offline.html`**
